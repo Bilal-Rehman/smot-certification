@@ -3,11 +3,20 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Throwable;
+
+class UserRole
+{
+    const male = 'male';
+    const female = 'female';
+    const other = 'other';
+}
+
 
 class AuthController extends Controller
 {
@@ -27,7 +36,7 @@ class AuthController extends Controller
                 ], 401);
             }
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-                $user = Auth::user();
+                $applicant = Auth::Applicant();
 
                 $success['token'] = $user->createToken('laragigs')->plainTextToken;
                 $success['name'] = $user->name;
@@ -59,9 +68,15 @@ class AuthController extends Controller
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required',
-                    'email' => 'required|email|unique:users',
-                    'password' => 'required|confirmed|min:8',
+                    'applicant_name' => 'required',
+                    'father_name' => 'required',
+                    'date_of_birth' => 'required|date_format:Y-m-d|before:today',
+                    'cnic' => 'required|min:15|max:15|unique:applicants',
+                    'domicile' => 'required',
+                    'gender' => 'required|in:male,female,other',
+                    'cell_no' => 'required|min:11|max:11',
+                    'residential_address' => 'required',
+                    'permanent_address' => 'required',
                 ]
             );
             if ($validator->fails()) {
@@ -73,12 +88,10 @@ class AuthController extends Controller
             }
 
             $input = $request->all();
-            $input['password'] = bcrypt($input['password']);
-            unset($input['password_confirmation']);
-            $user = User::create($input);
+            $applicant = Applicant::create($input);
 
-            $data['token'] = $user->createToken('smot-certification')->plainTextToken;
-            $data['name'] = $user->name;
+            $data['id'] = $applicant->id;
+            $data['name'] = $applicant->applicant_name;
 
             $response = [
                 'success' => true,

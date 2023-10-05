@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('applicant_name');
             $table->string('father_name');
-            $table->string('email')->unique();
-            $table->string('email_verified_at')->nullable();
-            $table->string('password');
             $table->date('date_of_birth');
             $table->string('cnic', 15);
             $table->string('domicile');
