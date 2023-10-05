@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Applicant;
+use App\Models\FinalResult;
 use Illuminate\Http\Request;
 
-class ApplicantController extends Controller
+class FinalResultController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -20,7 +19,7 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        return view('applicants.register');
+        return view('result.final-result');
     }
 
     /**
@@ -28,13 +27,13 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        // return redirect('/home/lock-stitch/create');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Applicant $applicant)
+    public function show(FinalResult $finalResult)
     {
         //
     }
@@ -42,7 +41,7 @@ class ApplicantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Applicant $applicant)
+    public function edit(FinalResult $finalResult)
     {
         //
     }
@@ -50,7 +49,7 @@ class ApplicantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Applicant $applicant)
+    public function update(Request $request, FinalResult $finalResult)
     {
         //
     }
@@ -58,7 +57,7 @@ class ApplicantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Applicant $applicant)
+    public function destroy(FinalResult $finalResult)
     {
         //
     }

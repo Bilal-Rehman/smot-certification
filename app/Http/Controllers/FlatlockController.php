@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Applicant;
+use App\Models\Flatlock;
 use Illuminate\Http\Request;
 
-class ApplicantController extends Controller
+class FlatlockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        return view('applicants.register');
+        return view('flatlock.create');
     }
 
     /**
@@ -28,13 +28,13 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        // return redirect('/home/lock-stitch/create');
+        return redirect('/home/applicants/final-result');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Applicant $applicant)
+    public function show(Flatlock $flatlock)
     {
         //
     }
@@ -42,7 +42,7 @@ class ApplicantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Applicant $applicant)
+    public function edit(Flatlock $flatlock)
     {
         //
     }
@@ -50,7 +50,7 @@ class ApplicantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Applicant $applicant)
+    public function update(Request $request, Flatlock $flatlock)
     {
         //
     }
@@ -58,7 +58,7 @@ class ApplicantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Applicant $applicant)
+    public function destroy(Flatlock $flatlock)
     {
         //
     }

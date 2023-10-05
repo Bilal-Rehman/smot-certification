@@ -313,7 +313,7 @@ return [
         ],
         [
             'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'url'         => '/home/applicants/create',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
