@@ -24,6 +24,7 @@ class AuthController extends Controller
     {
         // dd($request->all());
         try {
+
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email',
                 'password' => 'required',
@@ -36,7 +37,7 @@ class AuthController extends Controller
                 ], 401);
             }
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-                $applicant = Auth::Applicant();
+                $user = Auth::user();
 
                 $success['token'] = $user->createToken('laragigs')->plainTextToken;
                 $success['name'] = $user->name;

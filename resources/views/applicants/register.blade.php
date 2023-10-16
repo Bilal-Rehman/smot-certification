@@ -13,7 +13,7 @@
             Register new Applicant
         </div>
         <div class="card-body">
-            <form action="/home/applicants/store" method="post">
+            <form action="/home/lock-stitch/create" method="GET">
               @csrf
                 {{-- Name --}}
                 <div class="mb-3">
