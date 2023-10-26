@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('academic_qualifications', function (Blueprint $table) {
             $table->id();
             $table->string('degree_name');
-            $table->integer('passign_year');
+            $table->integer('passing_year');
             $table->decimal('marks');
             $table->foreignId('applicant_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

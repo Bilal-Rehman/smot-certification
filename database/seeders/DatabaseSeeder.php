@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ApplicantSeeder::class,
             AcademicQualificationSeeder::class,
             EmploymentRecordSeeder::class,
+            FinalResultSeeder::class,
         ]);
     }
 }

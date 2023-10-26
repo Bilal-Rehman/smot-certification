@@ -34,13 +34,14 @@ class AuthController extends Controller
                     'success' => false,
                     'message' => 'Validation error',
                     'error' => $validator->errors(),
-                ], 401);
+                ], 400);
             }
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 $user = Auth::user();
 
                 $success['token'] = $user->createToken('laragigs')->plainTextToken;
                 $success['name'] = $user->name;
+                $success['email'] = $user->email;
 
                 $response = [
                     'success' => true,
@@ -65,7 +66,9 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // In case anything unexpected happens we are using try/catch
         try {
+            // Validate all personal information fields
             $validator = Validator::make(
                 $request->all(),
                 [
@@ -80,6 +83,8 @@ class AuthController extends Controller
                     'permanent_address' => 'required',
                 ]
             );
+
+            // If validation fails return a bad input response
             if ($validator->fails()) {
                 return response()->json([
                     'success' => false,
@@ -88,20 +93,44 @@ class AuthController extends Controller
                 ], 400);
             }
 
+            // Save all the fields in $input variable
             $input = $request->all();
+
+            // removing fields which are separate from applicant model
+            unset($input['academic_qualification']);
+            unset($input['employment_record']);
+
+            // creating the applicant model
             $applicant = Applicant::create($input);
 
+            // Adding necessary fields to $data to return in response
             $data['id'] = $applicant->id;
             $data['name'] = $applicant->applicant_name;
 
+            // in case academic qualifications were sent
+            if (isset($request->all()['academic_qualification'])) {
+                $academicQualification = $request->all()['academic_qualification'];
+                $applicant->academicQualifications()->create($academicQualification);
+                $data['Academic Qualification'] = "Added";
+            }
+            // in case employment record were sent
+            if (isset($request->all()['employment_record'])) {
+                $employmentRecord = $request->all()['employment_record'];
+                $applicant->employmentRecords()->create($employmentRecord);
+                $data['Employment Record'] = "Added";
+            }
+
+            // making valid response to return
             $response = [
                 'success' => true,
                 'data' => $data,
                 'message' => 'User registered succesfully',
             ];
 
+            // returing the response with status code
             return response()->json($response, 200);
         } catch (Throwable $th) {
+            // If something unexpected happens 
             return response()->json([
                 'success' => false,
                 'message' => 'Unknown error ' . $th

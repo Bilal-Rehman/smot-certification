@@ -6,9 +6,9 @@ use App\Models\Applicant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AcademicQualification>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FinalResult>
  */
-class AcademicQualificationFactory extends Factory
+class FinalResultFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +19,6 @@ class AcademicQualificationFactory extends Factory
     {
         $applicantId = Applicant::inRandomOrder()->value('id');
         return [
-            'degree_name' => $this->faker->name(),
-            'passing_year' => $this->faker->numberBetween(2000, 2022),
-            'marks' => $this->faker->randomFloat(2, 0, 1100),
             'applicant_id' => $applicantId,
         ];
     }

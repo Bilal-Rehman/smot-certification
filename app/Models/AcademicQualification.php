@@ -11,7 +11,7 @@ class AcademicQualification extends Model
 
     protected $fillable = [
         'degree_name',
-        'passign_year',
+        'passing_year',
         'marks',
         'user_id',
     ];
