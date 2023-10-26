@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +16,9 @@ class ApplicantFactory extends Factory
      */
     public function definition(): array
     {
-        $gender = ['male', 'female', 'other'];
+        $gender = ['Male', 'Female', 'Other'];
         return [
             'applicant_name' => $this->faker->name(),
-            'remember_token' => Str::random(10),
-
             'father_name' => $this->faker->name(),
             'date_of_birth' => $this->faker->date(),
             'cnic' => $this->faker->numberBetween(10000, 99999) . "-" . $this->faker->numberBetween(1000000, 9999999) . "-" . $this->faker->numberBetween(0, 9),

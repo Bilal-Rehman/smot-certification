@@ -17,11 +17,11 @@ class EmploymentRecordFactory extends Factory
      */
     public function definition(): array
     {
-        $applicantId = Applicant::inRandomOrder()->value('id');
+        $applicant_id = Applicant::inRandomOrder()->value('applicant_id');
         return [
             'industry' => $this->faker->company(),
             'job_title' => $this->faker->jobTitle(),
-            'applicant_id' => $applicantId,
+            'applicant_id' => $applicant_id,
         ];
     }
 }
