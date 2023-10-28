@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('final_result_id');
             $table->unsignedBigInteger('applicant_id');
 
-            $table->foreign('applicant_id')->references('applicant_id')->on('applicant');
+            $table->foreign('applicant_id')->references('applicant_id')->on('applicants');
             $table->timestamps();
         });
     }

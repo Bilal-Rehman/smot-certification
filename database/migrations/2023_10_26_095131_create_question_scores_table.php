@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('question_id');
             $table->unsignedTinyInteger('score');
 
-            $table->foreign('machine_result_id')->references('machine_result_id')->on('machine_result');
-            $table->foreign('test_type_id')->references('test_type_id')->on('test_type');
-            $table->foreign('question_id')->references('question_id')->on('question');
+            $table->foreign('machine_result_id')->references('machine_result_id')->on('machine_results');
+            $table->foreign('test_type_id')->references('test_type_id')->on('test_types');
+            $table->foreign('question_id')->references('question_id')->on('questions');
             $table->timestamps();
         });
     }

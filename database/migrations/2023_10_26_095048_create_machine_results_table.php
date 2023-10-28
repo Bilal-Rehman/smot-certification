@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('remarks')->nullable();
             $table->unsignedBigInteger('final_result_id');
 
-            $table->foreign('machine_type_id')->references('machine_type_id')->on('machine_type');
-            $table->foreign('final_result_id')->references('final_result_id')->on('final_result');
+            $table->foreign('machine_type_id')->references('machine_type_id')->on('machine_types');
+            $table->foreign('final_result_id')->references('final_result_id')->on('final_results');
             $table->timestamps();
         });
     }

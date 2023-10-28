@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('description');
             $table->unsignedBigInteger('test_type_id');
 
-            $table->foreign('test_type_id')->references('test_type_id')->on('test_type');
+            $table->foreign('test_type_id')->references('test_type_id')->on('test_types');
             $table->timestamps();
         });
     }
