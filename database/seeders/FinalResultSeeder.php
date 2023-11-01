@@ -13,7 +13,7 @@ class FinalResultSeeder extends Seeder
      */
     public function run(): void
     {
-        $applicantIds = \App\Models\Applicant::orderBy('applicant_id')->pluck('applicant_id')->toArray();
+        $applicantIds = \App\Models\Applicant::orderBy('id')->pluck('id')->toArray();
         foreach ($applicantIds as $applicantId) {
             FinalResult::create([
                 "applicant_id" => $applicantId,

@@ -17,10 +17,10 @@ class AcademicQualificationFactory extends Factory
      */
     public function definition(): array
     {
-        $applicant_id = Applicant::inRandomOrder()->value('applicant_id');
+        $applicant_id = Applicant::inRandomOrder()->value('id');
         return [
             'degree_name' => $this->faker->name(),
-            'passign_year' => $this->faker->numberBetween(2000, 2022),
+            'passing_year' => $this->faker->numberBetween(2000, 2022),
             'marks' => $this->faker->randomFloat(2, 0, 1100),
             'applicant_id' => $applicant_id,
         ];

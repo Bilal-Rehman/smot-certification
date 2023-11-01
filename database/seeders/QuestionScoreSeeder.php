@@ -15,9 +15,9 @@ class QuestionScoreSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $machineResultIds = \App\Models\MachineResult::orderBy('machine_result_id')->pluck('machine_result_id')->toArray();
-        $testTypeIds = \App\Models\TestType::orderBy('test_type_id')->pluck('test_type_id')->toArray();
-        $questionIds = \App\Models\Question::orderBy('question_id')->pluck('question_id')->toArray();
+        $machineResultIds = \App\Models\MachineResult::orderBy('id')->pluck('id')->toArray();
+        $testTypeIds = \App\Models\TestType::orderBy('id')->pluck('id')->toArray();
+        $questionIds = \App\Models\Question::orderBy('id')->pluck('id')->toArray();
         // dd($questionIds);
 
         foreach ($machineResultIds as $machineResultId) {

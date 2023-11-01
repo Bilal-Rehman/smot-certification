@@ -15,8 +15,8 @@ class MachineResultSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $resultIds = \App\Models\FinalResult::orderBy('final_result_id')->pluck('final_result_id')->toArray();
-        $machineIds = \APP\Models\MachineType::orderBy('machine_type_id')->pluck('machine_type_id')->toArray();
+        $resultIds = \App\Models\FinalResult::orderBy('id')->pluck('id')->toArray();
+        $machineIds = \APP\Models\MachineType::orderBy('id')->pluck('id')->toArray();
 
         foreach ($resultIds as $resultId) {
             foreach ($machineIds as $machineId) {

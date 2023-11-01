@@ -13,6 +13,6 @@ class AcademicQualification extends Model
         'degree_name',
         'passing_year',
         'marks',
-        'user_id',
+        'applicant_id',
     ];
 }

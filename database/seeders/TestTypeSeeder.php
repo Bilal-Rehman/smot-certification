@@ -14,12 +14,12 @@ class TestTypeSeeder extends Seeder
     public function run(): void
     {
         $testNames = ["Stiching Management", "Quality Management", "Basic Knowledge"];
-        $test_type_ids = \App\Models\MachineType::orderBy('machine_type_id')->pluck('machine_type_id')->toArray();
+        $test_type_ids = \App\Models\MachineType::orderBy('id')->pluck('id')->toArray();
         foreach ($test_type_ids as $test_type_id) {
             foreach ($testNames as $testName) {
                 TestType::create([
                     "test_type_name" => $testName,
-                    "machine_id" => $test_type_id,
+                    "machine_type_id" => $test_type_id,
                 ]);
             }
         }

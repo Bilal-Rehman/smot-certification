@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('academic_qualifications', function (Blueprint $table) {
-            $table->bigIncrements('academic_qualification_id');
+            $table->id();
             $table->string('degree_name');
-            $table->integer('passign_year');
+            $table->integer('passing_year');
             $table->decimal('marks');
             $table->unsignedBigInteger('applicant_id');
             $table->timestamps();
 
-            $table->foreign('applicant_id')->references('applicant_id')->on('applicants');
+            $table->foreign('applicant_id')->references('id')->on('applicants');
         });
     }
 

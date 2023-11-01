@@ -15,7 +15,7 @@ class QuestionSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $testIds = \App\Models\TestType::orderBy('test_type_id')->pluck('test_type_id')->toArray();
+        $testIds = \App\Models\TestType::orderBy('id')->pluck('id')->toArray();
         foreach ($testIds as $testId) {
             for ($i = 0; $i < 5; $i++) {
                 Question::create([

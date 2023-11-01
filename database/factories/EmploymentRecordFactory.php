@@ -17,7 +17,7 @@ class EmploymentRecordFactory extends Factory
      */
     public function definition(): array
     {
-        $applicant_id = Applicant::inRandomOrder()->value('applicant_id');
+        $applicant_id = Applicant::inRandomOrder()->value('id');
         return [
             'industry' => $this->faker->company(),
             'job_title' => $this->faker->jobTitle(),

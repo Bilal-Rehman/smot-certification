@@ -10,6 +10,8 @@ class Applicant extends Model
 {
     use HasFactory;
 
+    // protected $table = ['applicants'];
+
     protected $fillable = [
         'applicant_name',
         'father_name',
@@ -29,5 +31,10 @@ class Applicant extends Model
     public function employmentRecords(): HasMany
     {
         return $this->hasMany(EmploymentRecord::class);
+    }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(FinalResult::class);
     }
 }

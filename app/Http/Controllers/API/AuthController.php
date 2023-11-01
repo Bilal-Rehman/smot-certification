@@ -40,8 +40,12 @@ class AuthController extends Controller
                 $user = Auth::user();
 
                 $success['token'] = $user->createToken('laragigs')->plainTextToken;
-                $success['name'] = $user->name;
-                $success['email'] = $user->email;
+                $success['userData'] = [
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ];
+                // $success['name'] = $user->name;
+                // $success['email'] = $user->email;
 
                 $response = [
                     'success' => true,
@@ -104,20 +108,21 @@ class AuthController extends Controller
             $applicant = Applicant::create($input);
 
             // Adding necessary fields to $data to return in response
-            $data['id'] = $applicant->id;
-            $data['name'] = $applicant->applicant_name;
+            // $data['id'] = $applicant->id;
+            // $data['name'] = $applicant->applicant_name;
+            $data['personalInformation'] = $input;
 
             // in case academic qualifications were sent
             if (isset($request->all()['academic_qualification'])) {
                 $academicQualification = $request->all()['academic_qualification'];
                 $applicant->academicQualifications()->create($academicQualification);
-                $data['Academic Qualification'] = "Added";
+                $data['Academic Qualification'] = $academicQualification;
             }
             // in case employment record were sent
             if (isset($request->all()['employment_record'])) {
                 $employmentRecord = $request->all()['employment_record'];
                 $applicant->employmentRecords()->create($employmentRecord);
-                $data['Employment Record'] = "Added";
+                $data['Employment Record'] = $employmentRecord;
             }
 
             // making valid response to return
