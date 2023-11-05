@@ -17,6 +17,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // // new fields
+            // $table->string('father_name')->nullable();
+            // $table->date('date_of_birth')->nullable();
+            // $table->string('cnic', 15)->nullable();
+            // $table->string('domicile')->nullable();
+            // $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            // $table->string('cell_no', 11)->nullable();
+            // $table->string('residential_address')->nullable();
+            // $table->string('permanent_address')->nullable();
+            // // end of new fields
+
             $table->rememberToken();
             $table->timestamps();
         });
