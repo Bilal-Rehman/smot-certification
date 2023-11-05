@@ -6,7 +6,7 @@
     <title>Register Applicant</title>
 </head>
 <body>
-  @extends('layouts\app')
+  @extends('layouts.app')
   @section('content')
     <div class="container card">
         <div class="card-header my-4">
