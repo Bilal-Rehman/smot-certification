@@ -13,7 +13,10 @@ class MachineTypeControllerApi extends Controller
      */
     public function index()
     {
-        $response = MachineType::all();
+        $response = [
+            "success" => true,
+            "data" => MachineType::all()
+        ];
         return response()->json($response, 200);
     }
 
@@ -37,6 +40,7 @@ class MachineTypeControllerApi extends Controller
             $testWithQuestions[] = $testType;
         }
         $response = [
+            "success" => true,
             "machine_id" => $machineType->id,
             "machine_name" => $machineType->machine_name,
             "TestTypes" => $testWithQuestions,

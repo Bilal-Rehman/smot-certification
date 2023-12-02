@@ -29,8 +29,11 @@ class QuestionControllerApi extends Controller
      */
     public function show(Question $question)
     {
-        $response = ["data" => $question];
-        return response()->json($question);
+        $response = [
+            "success" => true,
+            "data" => $question
+        ];
+        return response()->json($response);
     }
 
     /**

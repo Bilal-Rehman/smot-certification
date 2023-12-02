@@ -29,7 +29,10 @@ class TestTypeControllerApi extends Controller
      */
     public function show(TestType $testType)
     {
-        $response = ["data" => $testType];
+        $response = [
+            "success" => true,
+            "data" => $testType
+        ];
         return response()->json($response);
     }
 

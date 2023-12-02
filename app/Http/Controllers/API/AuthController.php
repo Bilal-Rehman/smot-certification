@@ -55,15 +55,25 @@ class AuthController extends Controller
 
                 return response()->json($response, 200);
             } else {
+                $errors = [
+                    'message' => 'Invalid email or password',
+                ];
+
+                if (Auth::attempt(['email' => $request->email])) {
+                    $errors['message'] = 'Incorrect password';
+                } else {
+                    $errors['message'] = 'Invalid email';
+                }
+
                 return response()->json([
                     'success' => false,
-                    'message' => 'Unauthorized',
+                    'message' => $errors,
                 ], 403);
             }
         } catch (Throwable $th) {
             return response()->json([
                 "success" => false,
-                "message" => "Unknown error occured. Couldn't login",
+                "message" => "Incorrect password", //"Unknown error occured. Couldn't login. " . $th,
             ], 400);
         }
     }

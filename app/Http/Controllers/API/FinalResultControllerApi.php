@@ -37,6 +37,7 @@ class FinalResultControllerApi extends Controller
             $machineResultsWithScores = $machineResults;
         }
         $response = [
+            "success" => true,
             'result_id' => $finalResult->id,
             'machine_results' => $machineResultsWithScores,
         ];
